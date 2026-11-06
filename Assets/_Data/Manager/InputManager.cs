@@ -13,6 +13,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] private bool canJump;
     public bool CanJump => canJump;
 
+    [SerializeField] protected float reload = 0f;
+
     private void Awake()
     {
         if (InputManager.instance != null) Debug.LogError("Only 1 InputManager allow to exist");
@@ -28,6 +30,7 @@ public class InputManager : MonoBehaviour
     {
         this.inputPos.x = Input.GetAxisRaw("Horizontal");
         this.inputPos.y = Input.GetAxisRaw("Vertical");
+        this.reload = Input.GetAxis("Reload");
 
         if (Input.GetKeyDown(KeyCode.Space)) this.canJump = true;
     }
@@ -35,5 +38,10 @@ public class InputManager : MonoBehaviour
     public void ResetJump()
     {
         this.canJump = false;
+    }
+
+    public virtual float IsReload()
+    {
+        return this.reload;
     }
 }

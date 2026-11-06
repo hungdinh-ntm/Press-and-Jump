@@ -10,6 +10,8 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField] protected bool isMoving;
     [SerializeField] protected Animator animator;
+    public Animator Animator => animator;
+
     [SerializeField] protected CheckGround checkGround;
 
     private void Update()
