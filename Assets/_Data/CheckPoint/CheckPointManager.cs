@@ -54,9 +54,14 @@ public class CheckPointManager : MonoBehaviour
         return false;
     }
 
-    protected virtual void CheckReload()
+    public virtual void CheckReload()
     {
         if (InputManager.Instance.IsReload() == 0) return;
+        this.TeleOldPoint();
+    }
+
+    public virtual void TeleOldPoint()
+    {
         if (this.currentCheckPoint == null) return;
 
         Vector3 checkPos = this.currentCheckPoint.transform.position;
